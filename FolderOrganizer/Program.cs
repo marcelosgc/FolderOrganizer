@@ -9,25 +9,7 @@ int option;
 var defaultFolder = "D:\\Downloads";
 
 StartMenu();
-
 ExecuteOptionAndKeepAlive();
-
-bool IsExit(int i)
-{
-    JobsEnum.TryParse("Exit", out JobsEnum value);
-    return Convert.ToInt32(value) == i;
-}
-
-void WaitingState()
-{
-    AnsiConsole.MarkupLine("[grey69]--------- || ---------[/]");
-    AnsiConsole.WriteLine();
-    AnsiConsole.MarkupLine("[springgreen3] Ergh.. What do you want, again? ¬_¬[/]");
-    var sOption = AnsiConsole.Prompt(
-        new SelectionPrompt<string>()
-            .AddChoices(Enum.GetNames(typeof(JobsEnum)).ToList()));
-    option = Convert.ToInt32(Enum.Parse<JobsEnum>(sOption));
-}
 
 void StartMenu()
 {
@@ -37,6 +19,17 @@ void StartMenu()
             .Color(Color.Green));
 
     AnsiConsole.MarkupLine("What do you want?");
+    var sOption = AnsiConsole.Prompt(
+        new SelectionPrompt<string>()
+            .AddChoices(Enum.GetNames(typeof(JobsEnum)).ToList()));
+    option = Convert.ToInt32(Enum.Parse<JobsEnum>(sOption));
+}
+
+void WaitingState()
+{
+    AnsiConsole.MarkupLine("[grey69]--------- || ---------[/]");
+    AnsiConsole.WriteLine();
+    AnsiConsole.MarkupLine("[springgreen3] Ergh.. What do you want, again? ¬_¬[/]");
     var sOption = AnsiConsole.Prompt(
         new SelectionPrompt<string>()
             .AddChoices(Enum.GetNames(typeof(JobsEnum)).ToList()));
@@ -77,9 +70,15 @@ void ExecuteOptionAndKeepAlive()
                     break;
             }
         }
-        catch (CustomException e)
+        catch (CustomException)
         {
-            AnsiConsole.MarkupLine("[bold red] 0 on directory input is to cancel the operation. Operation Canceled![/]");
+            AnsiConsole.MarkupLine(
+                "[bold red] 0 on directory input is to cancel the operation. Operation Canceled![/]");
+            AnsiConsole.WriteLine();
+        }
+        catch (DirectoryNotFoundException)
+        {
+            AnsiConsole.MarkupLine($"[bold red] Somehow you put a wrong or a nonexistent directory. > < [/]");
             AnsiConsole.WriteLine();
         }
         catch (Exception e)
@@ -93,7 +92,7 @@ void ExecuteOptionAndKeepAlive()
             WaitingState();
         }
     } while (!IsExit(option));
-    
+
     AnsiConsole.WriteLine();
     AnsiConsole.MarkupLine("Bye!");
 }
@@ -109,4 +108,11 @@ string SetFolder()
 
     var chosenFolder = string.IsNullOrWhiteSpace(newDir) ? defaultFolder : newDir;
     return chosenFolder;
+}
+
+
+bool IsExit(int i)
+{
+    JobsEnum.TryParse("Exit", out JobsEnum value);
+    return Convert.ToInt32(value) == i;
 }
