@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderOrganizer", "FolderOrganizer\FolderOrganizer.csproj", "{448FAD08-98A7-4F13-8B45-2869F8AEBD17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderWorker", "FolderWorker\FolderWorker.csproj", "{56982BE3-7964-4BF0-9045-BC5A4BD6AB05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{448FAD08-98A7-4F13-8B45-2869F8AEBD17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{448FAD08-98A7-4F13-8B45-2869F8AEBD17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{448FAD08-98A7-4F13-8B45-2869F8AEBD17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{448FAD08-98A7-4F13-8B45-2869F8AEBD17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56982BE3-7964-4BF0-9045-BC5A4BD6AB05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56982BE3-7964-4BF0-9045-BC5A4BD6AB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56982BE3-7964-4BF0-9045-BC5A4BD6AB05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56982BE3-7964-4BF0-9045-BC5A4BD6AB05}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
